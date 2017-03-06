@@ -1,4 +1,5 @@
 package com.example.sachinaggarwal.tnm17.ParallaxViewPager;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -7,13 +8,10 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.support.v4.widget.DrawerLayout;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -24,51 +22,16 @@ import com.example.sachinaggarwal.tnm17.R;
 
 import java.util.ArrayList;
 
-//<<<<<<< Updated upstream
-//=======
-////<<<<<<< HEAD
-////import android.content.Intent;
-////import android.graphics.Color;
-////import android.graphics.drawable.ColorDrawable;
-////import android.os.Build;
-////import android.os.Bundle;
-//import android.support.annotation.RequiresApi;
-////import android.support.v4.app.Fragment;
-////import android.util.TypedValue;
-////=======
-//>>>>>>> Stashed changes
-
-//<<<<<<< Updated upstream
-//=======
-////>>>>>>> parallax package
-////<<<<<<< HEAD
-////import android.view.animation.BounceInterpolator;
-////import android.widget.AbsListView;
-////import android.widget.AbsListView.OnScrollListener;
-////import android.widget.ArrayAdapter;
-////import android.widget.ListAdapter;
-////import android.widget.ListView;
-////import android.widget.SimpleAdapter;
-////import android.widget.TextView;
-////=======
-////>>>>>>> parallax package
-////<<<<<<< HEAD
-////import java.util.HashMap;
-////=======
-////>>>>>>> parallax package
-//>>>>>>> Stashed changes
-
-public class SampleListFragment extends ScrollTabHolderFragment {
+/**
+ * Created by Bhavya Sapra on 20-02-2017.
+ */
+public class SampleListFragment2 extends ScrollTabHolderFragment {
 
     private static final String ARG_POSITION = "position";
 
-//<<<<<<< Updated upstream
-//
-//       private ListView mListView;
-//=======
-//<<<<<<< HEAD
-private ListView mListView;
-//    private SwipeMenuListView mList;
+    //<<<<<<< HEAD
+    private ListView mListView;
+    //    private SwipeMenuListView mList;
 //        private ArrayList<String> mListItems;
 //
 //    private int mPosition;
@@ -81,18 +44,14 @@ private ListView mListView;
 //
 //=======
     //    private ListView mListView;
-  private SwipeMenuListView mList;
+    private SwipeMenuListView mList;
     private ArrayList<String> mListItems;
 
     private int mPosition;
-//
-//<<<<<<< Updated upstream
-//
-//=======
-////>>>>>>> parallax package
-//>>>>>>> Stashed changes
+
+    //>>>>>>> parallax package
     public static Fragment newInstance(int position) {
-        SampleListFragment f = new SampleListFragment();
+        SampleListFragment2 f = new SampleListFragment2();
         Bundle b = new Bundle();
         b.putInt(ARG_POSITION, position);
         f.setArguments(b);
@@ -103,44 +62,34 @@ private ListView mListView;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPosition = getArguments().getInt(ARG_POSITION);
-//<<<<<<< Updated upstream
 //
-//
-//=======
-////
-////<<<<<<< HEAD
-//>>>>>>> Stashed changes
+//<<<<<<< HEAD
         mListItems = new ArrayList<String>();
 
-        for (int i = 1; i <= 10; i++) {
-            mListItems.add(i + ". item - currnet page: " + (mPosition + 1));
-        }
-//<<<<<<< Updated upstream
-//
-////        mListItems = new ArrayList<String>();
-//=======
-////=======
-//////        mListItems = new ArrayList<String>();
-//>>>>>>> Stashed changes
-////
-////        for (int i = 1; i <= 100; i++) {
-////            mListItems.add(i + ". item - currnet page: " + (mPosition + 1));
-////        }
-//<<<<<<< Updated upstream
-//=======
-////>>>>>>> parallax package
-//>>>>>>> Stashed changes
+
+    mListItems.add("Choreo Elims");
+    mListItems.add("Street Dance");
+    mListItems.add("Desert Duel");
+    mListItems.add("Razzmatazz Elims");
+    mListItems.add("Rock Dance");
+    mListItems.add("Funk in Motion");
+    mListItems.add("bhangra Dance");
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      View v = inflater.inflate(R.layout.fragment_list, null);
+
+        View v = inflater.inflate(R.layout.fragment_list, null);
 
         mListView = (ListView) v.findViewById(R.id.listView);
 
         View v1 = inflater.inflate(R.layout.schedule_list, null);
-    mList = (SwipeMenuListView) v1.findViewById(R.id.schedule_categories_listView);
 
+        mList = (SwipeMenuListView) v1.findViewById(R.id.schedule_categories_listView);
 
         // step 1. create a MenuCreator
         SwipeMenuCreator creator = new SwipeMenuCreator() {
@@ -189,18 +138,25 @@ private ListView mListView;
 
         mListView.setOnScrollListener(new OnScroll());
         mListView.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.list_item, android.R.id.text1, mListItems));
-//
-//<<<<<<< Updated upstream
-//
-//        if (Schedule.NEEDS_PROXY) {//in my moto phone(android 2.1),setOnScrollListener do not work well
-//=======
+
+//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+//        {
+//            @Override
+//            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
+//            {
+//                Intent intent= new Intent(this,EventDet)
+//            }
+//        });
+
+
+
+
 //<<<<<<< HEAD
 //        if(Schedule.NEEDS_PROXY){//in my moto phone(android 2.1),setOnScrollListener do not work well
 //=======
         if (Schedule.NEEDS_PROXY) {//in my moto phone(android 2.1),setOnScrollListener do not work well
-//>>>>>>> parallax package
-//>>>>>>> Stashed changes
-            mListView.setOnTouchListener(new OnTouchListener() {
+
+            mListView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if (mScrollTabHolder != null)
@@ -222,11 +178,7 @@ private ListView mListView;
     }
 
 
-//<<<<<<< Updated upstream
-//    public class OnScroll implements OnScrollListener {
-//=======
-    class OnScroll implements OnScrollListener {
-//>>>>>>> Stashed changes
+    class OnScroll implements AbsListView.OnScrollListener {
 
         @Override
         public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -249,7 +201,7 @@ private ListView mListView;
     }
 
 
-//    @Override
+    //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        View v = inflater.inflate(R.layout.schedule_list, null);
 //
